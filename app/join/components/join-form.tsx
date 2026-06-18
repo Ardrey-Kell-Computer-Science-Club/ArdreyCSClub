@@ -118,7 +118,7 @@ export default function SignupFormDemo() {
           />
         </LabelInputContainer>
 
-        {/* Grade + Major */}
+        {/* Just Grade Goes Here Nothing Else */}
         <div className="mb-4 flex flex-col space-y-2 md:flex-row md:space-x-2 md:space-y-0">
           <LabelInputContainer>
             <Label htmlFor="grade">Grade / Year</Label>

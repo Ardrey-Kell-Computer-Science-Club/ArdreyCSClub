@@ -1,23 +1,28 @@
+import process from "node:process";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
 const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null;
 
+// ADMIN_EMAIL is read from process.env where needed
+
+// console.log(ADMIN_EMAIL, resend);
+
 export async function POST(req: Request) {
 	// flexible body parsing: try JSON, otherwise parse urlencoded form body
-	let data: any = {};
+	let data: Record<string, unknown> = {};
 	try {
-		data = await req.json();
-	} catch (e) {
+		data = (await req.json()) as Record<string, unknown>;
+	} catch (_e) {
 		try {
 			const text = await req.text();
-			if (text && text.includes("=")) {
+			if (text?.includes("=")) {
 				data = Object.fromEntries(new URLSearchParams(text).entries());
 			} else {
 				data = {};
 			}
-		} catch (e2) {
+		} catch (_e2) {
 			data = {};
 		}
 	}
