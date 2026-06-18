@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
+import { AdminProvider } from "@/components/admin/AdminProvider";
 import Footer from "./components/footer";
 import { Navbar } from "./components/navbar";
 
@@ -28,10 +29,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="flex flex-col min-h-screen bg-black text-white">
-        <Navbar />
-        {children}
-        <Analytics />
-        <Footer />
+        <AdminProvider>
+          <Navbar />
+          {children}
+          <Analytics />
+          <Footer />
+        </AdminProvider>
       </body>
     </html>
   );

@@ -2,6 +2,7 @@
 
 import { Code2, Menu } from "lucide-react";
 import Link from "next/link";
+import AdminModal from "@/components/admin/AdminModal";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
@@ -10,7 +11,6 @@ const links = [
   { href: "/about", label: "About" },
   { href: "/hackathons", label: "Hackathons" },
   { href: "/developer", label: "Developer" },
-  { href: "/compettion", label: "Comps" },
   { href: "/projects", label: "Projects" },
 ];
 
@@ -47,12 +47,13 @@ export function Navbar() {
         </nav>
 
         {/* Desktop CTA */}
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-4">
           <Link href="/join">
             <Button className="bg-purple-600 hover:bg-purple-700">
               Join Club
             </Button>
           </Link>
+          <AdminModal />
         </div>
 
         {/* Mobile */}
@@ -75,14 +76,17 @@ export function Navbar() {
                 </span>
               </Link>
 
-              <a
-                href="https://github.com/Ardrey-Kell-Computer-Science-Club"
-                target="_blank"
-                rel="noreferrer"
-                className="text-sm text-zinc-300 hover:text-purple-400"
-              >
-                GitHub
-              </a>
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://github.com/Ardrey-Kell-Computer-Science-Club"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-sm text-zinc-300 hover:text-purple-400"
+                >
+                  GitHub
+                </a>
+                <AdminModal />
+              </div>
             </div>
 
             <nav className="flex flex-col gap-3">
