@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const officers = [
   {
-    name: "President Name",
+    name: "Shivang Patel",
     role: "President",
   },
   {
@@ -26,6 +26,9 @@ export default function Officers() {
         <h2 className="mb-12 text-center text-4xl font-bold">
           Leadership Team
         </h2>
+        <h3 className="mb-8 text-center text-2xl font-bold text-purple-400">
+          Officer Position Forms Soon -&gt;
+        </h3>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {officers.map((officer) => (

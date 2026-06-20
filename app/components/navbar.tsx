@@ -20,9 +20,7 @@ export function Navbar() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 font-bold">
-          <div className="rounded-lg bg-purple-600 p-2">
-            <Code2 className="h-3 w-4" />
-          </div>
+          <div className="rounded-lg bg-purple-600 p-2"></div>
 
           <span className="text-lg">
             AK<span className="text-purple-400">CS</span>

@@ -10,7 +10,7 @@ export default function AdminModal() {
   const [error, setError] = React.useState("");
 
   function tryCode() {
-    if (code.trim() === "987321") {
+    if (code.trim() === "987321") {  // the way we store the password here is not safe for open source and has to be stored a different way most likely through some backend way with Firebase 
       setIsAdmin(true);
       setOpen(false);
       setError("");
