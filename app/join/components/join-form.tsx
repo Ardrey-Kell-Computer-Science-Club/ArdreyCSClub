@@ -22,7 +22,7 @@ export default function SignupFormDemo() {
     "AI / ML",
     "Web Dev",
     "Cybersecurity",
-    "Open Source",
+    "Open Source Contributions",
     "Game Dev",
   ];
 

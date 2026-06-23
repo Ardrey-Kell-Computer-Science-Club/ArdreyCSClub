@@ -10,7 +10,8 @@ export default function AdminModal() {
   const [error, setError] = React.useState("");
 
   function tryCode() {
-    if (code.trim() === "987321") {  // the way we store the password here is not safe for open source and has to be stored a different way most likely through some backend way with Firebase 
+    if (code.trim() === "987321") {
+      // the way we store the password here is not safe for open source and has to be stored a different way most likely through some backend way with Firebase
       setIsAdmin(true);
       setOpen(false);
       setError("");
@@ -27,7 +28,7 @@ export default function AdminModal() {
     <div>
       {!isAdmin ? (
         <>
-          <Button variant="ghost" size="sm" onClick={() => setOpen(true)}>
+          <Button variant="default" size="sm" onClick={() => setOpen(true)}>
             Admin
           </Button>
 
@@ -35,9 +36,6 @@ export default function AdminModal() {
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
               <div className="mx-4 w-full max-w-sm rounded bg-zinc-900 p-6">
                 <h3 className="mb-2 text-lg font-semibold">Admin access</h3>
-                <p className="mb-4 text-sm text-zinc-400">
-                  Enter the admin code to unlock admin features.
-                </p>
 
                 <input
                   value={code}
