@@ -2,7 +2,6 @@
 
 import { Code2, Menu } from "lucide-react";
 import Link from "next/link";
-import AdminModal from "@/components/admin/AdminModal";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
@@ -46,12 +45,18 @@ export function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <Link href="/join">
-            <Button className="bg-purple-600 hover:bg-purple-700">
+          <Button 
+            className="bg-purple-600 hover:bg-purple-700"
+            asChild
+          >
+            <a 
+              href="https://form.typeform.com/to/PuDW3kHi" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
               Join Club
-            </Button>
-          </Link>
-          <AdminModal />
+            </a>
+          </Button>
         </div>
 
         {/* Mobile */}
@@ -83,7 +88,6 @@ export function Navbar() {
                 >
                   GitHub
                 </a>
-                <AdminModal />
               </div>
             </div>
 
@@ -100,11 +104,18 @@ export function Navbar() {
             </nav>
 
             <div className="mt-6">
-              <Link href="/join">
-                <Button className="w-full bg-purple-600 hover:bg-purple-700">
+              <Button 
+                className="w-full bg-purple-600 hover:bg-purple-700"
+                asChild
+              >
+                <a 
+                  href="https://form.typeform.com/to/PuDW3kHi" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
                   Join Club
-                </Button>
-              </Link>
+                </a>
+              </Button>
             </div>
           </SheetContent>
         </Sheet>
