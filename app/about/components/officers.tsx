@@ -32,7 +32,7 @@ export default function Officers() {
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {officers.map((officer) => (
-            <Card key={officer.name} className="border-zinc-800 bg-black">
+            <Card key={`${officer.name}-${officer.role}`} className="border-zinc-800 bg-black">
               <CardContent className="p-6 text-center">
                 <div className="mx-auto mb-4 h-24 w-24 rounded-full bg-purple-500/20" />
 

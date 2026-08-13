@@ -11,7 +11,7 @@ export default function HackathonPage() {
 
         <p className="mx-auto max-w-2xl text-lg leading-8 text-zinc-400 md:text-xl">
           The Ardrey Kell Computer Science Club is preparing exciting hackathon
-          opportunities for members throughout the school year. Whether you're a
+          opportunities for members throughout the school year. Whether you&apos;re a
           beginner looking to build your first project or an experienced
           developer ready for a challenge, future hackathons will provide
           opportunities to collaborate, learn new technologies, and create

@@ -58,7 +58,7 @@ export function Welcome() {
 
           <p className="mt-4 text-zinc-400">
             For code style, follow the existing patterns (Tailwind + React +
-            TypeScript). Keep changes small and focused. If you're unsure, open
+            TypeScript). Keep changes small and focused. If you&apos;re unsure, open
             a draft PR or start a discussion in an issue. We prefer new features
             and project code to be added under the organization so they are
             discoverable and maintained by the club.
@@ -80,12 +80,14 @@ export function Welcome() {
               </Link>
             </li>
             <li>
-              <Link
-                href="/README.md"
+              <a
+                href="https://github.com/shaypat112/ArdreyCSClub#readme"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-purple-400 hover:underline"
               >
                 Project README (development notes)
-              </Link>
+              </a>
             </li>
           </ul>
         </CardContent>

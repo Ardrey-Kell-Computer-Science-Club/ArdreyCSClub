@@ -1,9 +1,11 @@
 "use client";
 
-import { Code2, Menu } from "lucide-react";
+import { AnimatePresence, MotionConfig, motion, useReducedMotion } from "motion/react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const links = [
   { href: "/", label: "Home" },
@@ -14,112 +16,166 @@ const links = [
 ];
 
 export function Navbar() {
+  const pathname = usePathname();
+  const shouldReduceMotion = useReducedMotion();
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileOpen(false);
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [mobileOpen]);
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/60 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 font-bold">
-          <div className="rounded-lg bg-purple-600 p-2"></div>
+    <MotionConfig reducedMotion="user">
+      <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/60 backdrop-blur-xl">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+          <Link href="/" className="flex items-center gap-2 font-bold" aria-label="AKCS home">
+            <div className="rounded-lg bg-purple-600 p-2" aria-hidden="true" />
+            <span className="text-lg">
+              AK<span className="text-purple-400">CS</span>
+            </span>
+          </Link>
 
-          <span className="text-lg">
-            AK<span className="text-purple-400">CS</span>
-          </span>
-        </Link>
+          <nav className="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
+            {links.map((link) => {
+              const active = pathname === link.href;
 
-        {/* Desktop */}
-        <nav className="hidden items-center gap-8 md:flex">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="
-                text-sm text-zinc-300
-                transition-colors
-                hover:text-purple-400
-              "
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Desktop CTA */}
-        <div className="hidden md:flex items-center gap-4">
-          <Button 
-            className="bg-purple-600 hover:bg-purple-700"
-            asChild
-          >
-            <a 
-              href="https://form.typeform.com/to/PuDW3kHi" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              Join Club
-            </a>
-          </Button>
-        </div>
-
-        {/* Mobile */}
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="md:hidden">
-              <Menu className="h-5 w-5" />
-            </Button>
-          </SheetTrigger>
-
-          <SheetContent side="right" className="bg-black p-6">
-            <div className="mb-6 flex items-center justify-between">
-              <Link href="/" className="flex items-center gap-2 font-bold">
-                <div className="rounded-lg bg-purple-600 p-2">
-                  <Code2 className="h-3 w-4" />
-                </div>
-
-                <span className="text-lg">
-                  AK<span className="text-purple-400">CS</span>
-                </span>
-              </Link>
-
-              <div className="flex items-center gap-3">
-                <a
-                  href="https://github.com/Ardrey-Kell-Computer-Science-Club"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm text-zinc-300 hover:text-purple-400"
-                >
-                  GitHub
-                </a>
-              </div>
-            </div>
-
-            <nav className="flex flex-col gap-3">
-              {links.map((link) => (
+              return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="rounded-md px-3 py-2 text-lg text-zinc-200 hover:bg-zinc-900/40"
+                  aria-current={active ? "page" : undefined}
+                  className={`nav-link text-sm text-zinc-300 transition-colors hover:text-purple-400${active ? " is-active" : ""}`}
                 >
                   {link.label}
+                  {active && (
+                    <motion.span
+                      className="nav-active-line"
+                      layoutId="desktop-active-route"
+                      transition={{ type: "spring", stiffness: 360, damping: 32 }}
+                    />
+                  )}
                 </Link>
-              ))}
-            </nav>
+              );
+            })}
+          </nav>
 
-            <div className="mt-6">
-              <Button 
-                className="w-full bg-purple-600 hover:bg-purple-700"
-                asChild
+          <div className="hidden items-center gap-4 md:flex">
+            <Button className="bg-purple-600 hover:bg-purple-700" asChild>
+              <a
+                href="https://form.typeform.com/to/PuDW3kHi"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <a 
-                  href="https://form.typeform.com/to/PuDW3kHi" 
-                  target="_blank" 
+                Join Club
+              </a>
+            </Button>
+          </div>
+
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setMobileOpen((open) => !open)}
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={mobileOpen ? "close" : "menu"}
+                initial={shouldReduceMotion ? false : { opacity: 0, rotate: -35, scale: 0.8 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={shouldReduceMotion ? undefined : { opacity: 0, rotate: 35, scale: 0.8 }}
+                transition={{ duration: 0.16 }}
+              >
+                {mobileOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+              </motion.span>
+            </AnimatePresence>
+          </Button>
+        </div>
+
+        <AnimatePresence>
+          {mobileOpen && (
+            <>
+              <motion.button
+                type="button"
+                className="mobile-nav-scrim md:hidden"
+                aria-label="Close navigation menu"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.18 }}
+                onClick={() => setMobileOpen(false)}
+              />
+
+              <motion.aside
+                id="mobile-navigation"
+                className="mobile-nav-panel md:hidden"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Navigation menu"
+                initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: "100%" }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: "100%" }}
+                transition={{ type: "spring", stiffness: 320, damping: 34 }}
+              >
+                <div className="mobile-nav-meta">
+                  <span>AKCS / navigation</span>
+                  <span>route {pathname}</span>
+                </div>
+
+                <nav aria-label="Mobile navigation">
+                  {links.map((link, index) => {
+                    const active = pathname === link.href;
+
+                    return (
+                      <motion.div
+                        key={link.href}
+                        initial={shouldReduceMotion ? false : { opacity: 0, x: 18 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.045 + 0.05 }}
+                      >
+                        <Link
+                          href={link.href}
+                          aria-current={active ? "page" : undefined}
+                          className={active ? "is-active" : undefined}
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          <span>0{index + 1}</span>
+                          {link.label}
+                          <span aria-hidden="true">↗</span>
+                        </Link>
+                      </motion.div>
+                    );
+                  })}
+                </nav>
+
+                <a
+                  className="mobile-nav-cta"
+                  href="https://form.typeform.com/to/PuDW3kHi"
+                  target="_blank"
                   rel="noopener noreferrer"
                 >
                   Join Club
                 </a>
-              </Button>
-            </div>
-          </SheetContent>
-        </Sheet>
-      </div>
-    </header>
+              </motion.aside>
+            </>
+          )}
+        </AnimatePresence>
+      </header>
+    </MotionConfig>
   );
 }

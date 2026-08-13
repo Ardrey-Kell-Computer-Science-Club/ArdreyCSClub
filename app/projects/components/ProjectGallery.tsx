@@ -1,6 +1,5 @@
-"use client";
-
-import { ExternalLink,  } from "lucide-react";
+import { Braces, ExternalLink, GitBranch } from "lucide-react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 // ========================================
@@ -10,14 +9,22 @@ import { Button } from "@/components/ui/button";
 // 1. Upload your project screenshot to /public/projects/
 // 2. Add a new object to this array with your project details
 // 3. Submit a PR to share your work!
-const projects = [
+type Project = {
+  title: string;
+  description: string;
+  image?: string;
+  author: string;
+  link: string;
+  github?: string;
+};
+
+const projects: Project[] = [
   {
     title: "Sample Project",
     description: "This is a sample project to demonstrate the gallery format. Replace this with your own project!",
-    image: "/projects/sample-project.png",
     author: "Your Name",
     link: "https://github.com/yourusername/your-project",
-    github: "https://github.com/yourusername/your-project"
+    github: "https://github.com/yourusername/your-project",
   },
   // Add more projects below following the same format:
   // {
@@ -32,7 +39,7 @@ const projects = [
 
 export default function ProjectGallery() {
   return (
-    <div className="min-h-screen bg-black text-white py-16 px-6">
+    <main className="min-h-screen bg-black text-white py-16 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -50,29 +57,34 @@ export default function ProjectGallery() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project, index) => (
-              <ProjectCard key={index} project={project} />
+            {projects.map((project) => (
+              <ProjectCard key={`${project.title}-${project.author}`} project={project} />
             ))}
           </div>
         )}
       </div>
-    </div>
+    </main>
   );
 }
 
-function ProjectCard({ project }: { project: typeof projects[0] }) {
+function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="group bg-zinc-900/50 border border-zinc-800 rounded-lg overflow-hidden hover:border-purple-500/50 transition-all duration-300">
       <div className="aspect-video bg-zinc-800 relative overflow-hidden">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          onError={(e) => {
-            // Fallback if image doesn't exist
-            (e.target as HTMLImageElement).src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%2318181b'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2371717a' font-size='14'%3EImage not found%3C/text%3E%3C/svg%3E";
-          }}
-        />
+        {project.image ? (
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+        ) : (
+          <div className="flex h-full items-center justify-center bg-[radial-gradient(circle_at_center,rgba(183,166,255,0.14),transparent_65%)] text-purple-300">
+            <Braces className="h-12 w-12" aria-hidden="true" />
+            <span className="sr-only">Project preview coming soon</span>
+          </div>
+        )}
       </div>
 
       <div className="p-5">
@@ -89,13 +101,15 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
             {project.github && (
               <Button size="sm" variant="outline" asChild>
                 <a href={project.github} target="_blank" rel="noopener noreferrer">
-                  {/*<Github className="h-4 w-4" />*/}
+                  <GitBranch className="h-4 w-4" />
+                  <span className="sr-only">View {project.title} on GitHub</span>
                 </a>
               </Button>
             )}
             <Button size="sm" variant="default" className="bg-purple-600 hover:bg-purple-700" asChild>
               <a href={project.link} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="h-4 w-4" />
+                <span className="sr-only">Open {project.title}</span>
               </a>
             </Button>
           </div>
