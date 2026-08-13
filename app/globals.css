@@ -49,6 +49,8 @@
 
 :root,
 .dark {
+  --font-geist-sans: Arial, Helvetica, sans-serif;
+  --font-geist-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --background: #0b0a0e;
   --foreground: #f1f0ea;
   --card: #101010;

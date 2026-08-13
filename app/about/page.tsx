@@ -1,7 +1,6 @@
 import { Calendar2 } from "./components/calendar";
 import Meetings from "./components/meetings";
 import Mission from "./components/mission";
-import Officers from "./components/officers";
 
 export default function AboutPage() {
   return (
@@ -29,7 +28,6 @@ export default function AboutPage() {
       </section>
 
       <Mission />
-      <Officers />
       <Meetings />
       <Calendar2 />
     </main>

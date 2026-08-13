@@ -46,13 +46,11 @@ const csCutout = new Set([
 ]);
 
 function CsTileField() {
-  const shouldReduceMotion = useReducedMotion();
-
   return (
     <motion.figure
       className="cs-matrix"
       aria-label="CS rendered in negative space inside an interactive lavender tile matrix"
-      initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.96, x: 18 }}
+      initial={false}
       animate={{ opacity: 1, scale: 1, x: 0 }}
       transition={{ delay: 0.2, duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
     >
@@ -102,7 +100,7 @@ function LiveTerminal({ delay = 0 }: { delay?: number }) {
   return (
     <motion.aside
       className="hero-terminal"
-      initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
+      initial={false}
       animate={{ opacity: 1, y: 0 }}
       aria-label="Live club terminal showing example build commands"
       whileHover={shouldReduceMotion ? undefined : { y: -3 }}
@@ -173,8 +171,8 @@ export function LandingHero() {
 
           <div className="hero-inner">
             <motion.div
-              className="hero-meta"
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
+            className="hero-meta"
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.06, duration: 0.46, ease: [0.16, 1, 0.3, 1] }}
             >
@@ -184,13 +182,13 @@ export function LandingHero() {
 
             <div className="hero-heading-stage">
               <motion.h1
-                initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.12, duration: 0.46, ease: [0.16, 1, 0.3, 1] }}
               >
                 Ardrey Kell
                 <motion.span
-                  initial={shouldReduceMotion ? false : { opacity: 0, x: -18 }}
+                  initial={false}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.28, duration: 0.46, ease: [0.16, 1, 0.3, 1] }}
                 >
@@ -204,7 +202,7 @@ export function LandingHero() {
             <div className="hero-support-grid">
               <motion.div
                 className="hero-copy"
-                initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.46, ease: [0.16, 1, 0.3, 1] }}
               >
@@ -235,7 +233,7 @@ export function LandingHero() {
 
             <motion.div
               className="hero-telemetry"
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.36, duration: 0.46, ease: [0.16, 1, 0.3, 1] }}
             >
