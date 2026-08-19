@@ -4,6 +4,7 @@ import { ArrowRight, Braces, Terminal } from "lucide-react";
 import { AnimatePresence, MotionConfig, motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { CompetitionMap } from "./competition-map";
 
 const terminalFrames = [
   {
@@ -243,6 +244,7 @@ export function LandingHero() {
             </motion.div>
           </div>
         </section>
+        <CompetitionMap />
       </main>
     </MotionConfig>
   );

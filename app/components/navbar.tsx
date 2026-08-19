@@ -3,6 +3,7 @@
 import { AnimatePresence, MotionConfig, motion, useReducedMotion } from "motion/react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -11,6 +12,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/hackathons", label: "Hackathons" },
+  { href: "/perks", label: "Perks" },
   { href: "/developer", label: "Developer" },
   { href: "/projects", label: "Projects" },
 ];
@@ -42,7 +44,7 @@ export function Navbar() {
       <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/60 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           <Link href="/" className="flex items-center gap-2 font-bold" aria-label="AKCS home">
-            <div className="rounded-lg bg-purple-600 p-2" aria-hidden="true" />
+            <Image src="/ak-knight.png" alt="" width={38} height={38} className="h-9 w-9 object-cover" aria-hidden="true" />
             <span className="text-lg">
               AK<span className="text-purple-400">CS</span>
             </span>

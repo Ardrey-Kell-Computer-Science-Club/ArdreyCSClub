@@ -1,7 +1,3 @@
-import { Calendar2 } from "./components/calendar";
-import Meetings from "./components/meetings";
-import Mission from "./components/mission";
-
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-black text-white">
@@ -26,10 +22,6 @@ export default function AboutPage() {
           </p>
         </div>
       </section>
-
-      <Mission />
-      <Meetings />
-      <Calendar2 />
     </main>
   );
 }
