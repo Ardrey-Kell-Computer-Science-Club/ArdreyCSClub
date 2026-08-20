@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, MotionConfig, motion, useReducedMotion } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { MessageCircle, Menu, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -74,6 +74,16 @@ export function Navbar() {
           </nav>
 
           <div className="hidden items-center gap-4 md:flex">
+            <Button variant="outline" className="border-purple-400/60 bg-transparent text-purple-300 hover:bg-purple-400/10 hover:text-purple-200" asChild>
+              <a
+                href="https://discord.gg/9ANGBU38W"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageCircle aria-hidden="true" />
+                Join AK CS Discord
+              </a>
+            </Button>
             <Button className="bg-purple-600 hover:bg-purple-700" asChild>
               <a
                 href="https://form.typeform.com/to/PuDW3kHi"
@@ -166,6 +176,15 @@ export function Navbar() {
 
                 <a
                   className="mobile-nav-cta"
+                  href="https://discord.gg/9ANGBU38W"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Join AK CS Discord
+                </a>
+
+                <a
+                  className="mobile-nav-cta mobile-nav-cta-secondary"
                   href="https://form.typeform.com/to/PuDW3kHi"
                   target="_blank"
                   rel="noopener noreferrer"

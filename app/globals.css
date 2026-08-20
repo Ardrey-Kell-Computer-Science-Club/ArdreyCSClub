@@ -910,6 +910,13 @@ body > footer a {
   text-underline-offset: 4px;
 }
 
+.mobile-nav-cta-secondary {
+  margin-top: 0.75rem;
+  border-color: var(--ak-line) !important;
+  background: transparent !important;
+  color: var(--ak-text) !important;
+}
+
 /* Motion landing */
 
 .home-shell .home-hero {
@@ -1200,7 +1207,8 @@ body > footer a {
   color: var(--ak-bg);
 }
 
-.hero-primary-action svg {
+.hero-primary-action svg,
+.hero-secondary-action svg {
   width: 15px;
   height: 15px;
 }

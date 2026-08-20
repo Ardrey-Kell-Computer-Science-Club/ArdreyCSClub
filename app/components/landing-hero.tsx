@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Braces, Terminal } from "lucide-react";
+import { ArrowRight, Braces, MessageCircle, Terminal } from "lucide-react";
 import { AnimatePresence, MotionConfig, motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -215,7 +215,19 @@ export function LandingHero() {
 
                 <div className="hero-actions">
                   <motion.div whileHover={shouldReduceMotion ? undefined : { x: 3 }}>
-                    <Link href="/about" className="hero-primary-action">
+                    <a
+                      href="https://discord.gg/9ANGBU38W"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hero-primary-action"
+                    >
+                      Join AK CS Discord
+                      <MessageCircle aria-hidden="true" />
+                    </a>
+                  </motion.div>
+
+                  <motion.div whileHover={shouldReduceMotion ? undefined : { x: 3 }}>
+                    <Link href="/about" className="hero-secondary-action">
                       Learn More
                       <ArrowRight aria-hidden="true" />
                     </Link>
