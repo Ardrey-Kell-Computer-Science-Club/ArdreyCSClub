@@ -86,7 +86,7 @@ export function Navbar() {
             </Button>
             <Button className="bg-purple-600 hover:bg-purple-700" asChild>
               <a
-                href="https://form.typeform.com/to/PuDW3kHi"
+                href="https://docs.google.com/forms/d/e/1FAIpQLScSXo2QtZn4q6odGlHjs6qnQkK9bPUX4Rde71fiATYVa1Vk3w/viewform?usp=publish-editor"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -185,7 +185,7 @@ export function Navbar() {
 
                 <a
                   className="mobile-nav-cta mobile-nav-cta-secondary"
-                  href="https://form.typeform.com/to/PuDW3kHi"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScSXo2QtZn4q6odGlHjs6qnQkK9bPUX4Rde71fiATYVa1Vk3w/viewform?usp=publish-editor"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
