@@ -767,53 +767,6 @@ body > main.relative.flex.min-h-screen .rounded-2xl li::first-letter {
   color: var(--ak-orange);
 }
 
-/* Projects */
-
-body > div > .min-h-screen {
-  padding-top: 6rem !important;
-  padding-bottom: 8rem !important;
-}
-
-body > div > .min-h-screen h1 {
-  font-size: clamp(3.2rem, 7vw, 6.5rem) !important;
-  font-weight: 300;
-  letter-spacing: -0.08em;
-  text-shadow: none;
-}
-
-body > div > .min-h-screen h1 span {
-  color: var(--ak-orange) !important;
-}
-
-body > div > .min-h-screen .text-center > p {
-  color: var(--ak-muted) !important;
-  font-size: 0.88rem;
-  line-height: 1.8;
-}
-
-.group.bg-zinc-900\/50 > .aspect-video {
-  border-bottom: 1px solid var(--ak-line);
-  background: var(--ak-surface-raised);
-}
-
-.group.bg-zinc-900\/50 img {
-  filter: grayscale(1) contrast(1.08);
-  transition: filter 220ms ease, opacity 220ms ease !important;
-}
-
-.group.bg-zinc-900\/50:hover img {
-  filter: grayscale(0.2) contrast(1.04);
-}
-
-.group.bg-zinc-900\/50 h3 {
-  color: var(--ak-text);
-  font-weight: 400;
-}
-
-.group.bg-zinc-900\/50:hover h3 {
-  color: var(--ak-orange) !important;
-}
-
 /* Developer guide */
 
 body > main.mx-auto.max-w-3xl {

@@ -14,7 +14,6 @@ const links = [
   { href: "/hackathons", label: "Hackathons" },
   { href: "/perks", label: "Perks" },
   { href: "/developer", label: "Developer" },
-  { href: "/projects", label: "Projects" },
 ];
 
 export function Navbar() {
